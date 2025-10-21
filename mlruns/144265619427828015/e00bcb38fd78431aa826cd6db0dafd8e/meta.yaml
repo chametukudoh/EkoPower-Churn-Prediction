@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/ADMIN/Desktop/EKOPOWER-CUSTOMER-CHURN-ML-PROJECT/mlruns/144265619427828015/e00bcb38fd78431aa826cd6db0dafd8e/artifacts
+end_time: 1760785082670
+entry_point_name: ''
+experiment_id: '144265619427828015'
+lifecycle_stage: active
+run_id: e00bcb38fd78431aa826cd6db0dafd8e
+run_name: xgb_best_model
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1760785069051
+status: 3
+tags: []
+user_id: ADMIN

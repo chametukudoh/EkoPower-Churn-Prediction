@@ -1,0 +1,10 @@
+artifact_location: file:///C:/Users/ADMIN/Desktop/EKOPOWER-CUSTOMER-CHURN-ML-PROJECT/mlruns/239801761361751611/models/m-e16ef191fa244dde8c192f1d22bff287/artifacts
+creation_timestamp: 1760789811241
+experiment_id: '239801761361751611'
+last_updated_timestamp: 1760789818254
+model_id: m-e16ef191fa244dde8c192f1d22bff287
+model_type: null
+name: model
+source_run_id: 3cee07bee6e74b618969c2f085458d51
+status: 2
+status_message: null

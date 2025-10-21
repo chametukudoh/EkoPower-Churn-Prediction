@@ -1,0 +1,46 @@
+digest: f3ac0306
+name: dataset
+profile: '{"num_rows": 11684, "num_elements": 560832}'
+schema: '{"mlflow_colspec": [{"type": "double", "name": "cons_12m", "required": true},
+  {"type": "double", "name": "cons_gas_12m", "required": true}, {"type": "double",
+  "name": "cons_last_month", "required": true}, {"type": "double", "name": "forecast_cons_12m",
+  "required": true}, {"type": "double", "name": "forecast_cons_year", "required":
+  true}, {"type": "double", "name": "forecast_discount_energy", "required": true},
+  {"type": "double", "name": "forecast_meter_rent_12m", "required": true}, {"type":
+  "double", "name": "forecast_price_energy_off_peak", "required": true}, {"type":
+  "double", "name": "forecast_price_energy_peak", "required": true}, {"type": "double",
+  "name": "forecast_price_pow_off_peak", "required": true}, {"type": "double", "name":
+  "has_gas", "required": true}, {"type": "double", "name": "imp_cons", "required":
+  true}, {"type": "double", "name": "margin_gross_pow_ele", "required": true}, {"type":
+  "double", "name": "margin_net_pow_ele", "required": true}, {"type": "double", "name":
+  "nb_prod_act", "required": true}, {"type": "double", "name": "net_margin", "required":
+  true}, {"type": "double", "name": "num_years_antig", "required": true}, {"type":
+  "double", "name": "pow_max", "required": true}, {"type": "double", "name": "tenure_days",
+  "required": true}, {"type": "double", "name": "days_to_renewal", "required": true},
+  {"type": "double", "name": "contract_active", "required": true}, {"type": "double",
+  "name": "contracted_tenure_years", "required": true}, {"type": "double", "name":
+  "price_off_peak_var_mean", "required": true}, {"type": "double", "name": "price_off_peak_var_std",
+  "required": true}, {"type": "double", "name": "price_peak_var_mean", "required":
+  true}, {"type": "double", "name": "price_peak_var_std", "required": true}, {"type":
+  "double", "name": "price_mid_peak_var_mean", "required": true}, {"type": "double",
+  "name": "price_mid_peak_var_std", "required": true}, {"type": "double", "name":
+  "price_off_peak_fix_mean", "required": true}, {"type": "double", "name": "price_off_peak_fix_std",
+  "required": true}, {"type": "double", "name": "price_peak_fix_mean", "required":
+  true}, {"type": "double", "name": "price_peak_fix_std", "required": true}, {"type":
+  "double", "name": "price_mid_peak_fix_mean", "required": true}, {"type": "double",
+  "name": "price_mid_peak_fix_std", "required": true}, {"type": "double", "name":
+  "origin_up_ewxeelcelemmiwuafmddpobolfuxioce", "required": true}, {"type": "double",
+  "name": "origin_up_kamkkxfxxuwbdslkwifmmcsiusiuosws", "required": true}, {"type":
+  "double", "name": "origin_up_ldkssxwpmemidmecebumciepifcamkci", "required": true},
+  {"type": "double", "name": "origin_up_lxidpiddsbxsbosboudacockeimpuepw", "required":
+  true}, {"type": "double", "name": "origin_up_nan", "required": true}, {"type": "double",
+  "name": "channel_sales_MISSING", "required": true}, {"type": "double", "name": "channel_sales_epumfxlbckeskwekxbiuasklxalciiuu",
+  "required": true}, {"type": "double", "name": "channel_sales_ewpakwlliwisiwduibdlfmalxowmwpci",
+  "required": true}, {"type": "double", "name": "channel_sales_fixdbufsefwooaasfcxdxadsiekoceaa",
+  "required": true}, {"type": "double", "name": "channel_sales_foosdfpfkusacimwkcsosbicdxkicaua",
+  "required": true}, {"type": "double", "name": "channel_sales_lmkebamcaaclubfxadlmueccxoimlema",
+  "required": true}, {"type": "double", "name": "channel_sales_sddiedcslfslkckwlfkdpoeeailfpeds",
+  "required": true}, {"type": "double", "name": "channel_sales_usilxuppasemubllopkaafesmlibmsdf",
+  "required": true}, {"type": "double", "name": "channel_sales_nan", "required": true}]}'
+source: '{"uri": "data/client_data.csv"}'
+source_type: local

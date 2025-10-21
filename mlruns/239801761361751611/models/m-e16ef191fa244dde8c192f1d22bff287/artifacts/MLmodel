@@ -1,0 +1,22 @@
+artifact_path: file:///C:/Users/ADMIN/Desktop/EKOPOWER-CUSTOMER-CHURN-ML-PROJECT/mlruns/239801761361751611/models/m-e16ef191fa244dde8c192f1d22bff287/artifacts
+flavors:
+  python_function:
+    data: model.xgb
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.xgboost
+    python_version: 3.11.0
+  xgboost:
+    code: null
+    data: model.xgb
+    model_class: xgboost.sklearn.XGBClassifier
+    model_format: xgb
+    xgb_version: 3.0.5
+mlflow_version: 3.4.0
+model_id: m-e16ef191fa244dde8c192f1d22bff287
+model_size_bytes: 1743623
+model_uuid: m-e16ef191fa244dde8c192f1d22bff287
+prompts: null
+run_id: 3cee07bee6e74b618969c2f085458d51
+utc_time_created: '2025-10-18 12:16:51.346048'
