@@ -1,14 +1,13 @@
 # EkoPower Churn Prediction Pipeline 🔌📉
 
-## 🧠 Answer
 
-We developed an end-to-end churn prediction pipeline for EkoPower to proactively identify customers likely to leave the service. This empowers the team to target high-risk segments with tailored interventions, reduce churn, and improve customer lifetime value.
+I developed an end-to-end churn prediction pipeline for EkoPower to proactively identify customers likely to leave the service. This empowers the team to target high-risk segments with tailored interventions, reduce churn, and improve customer lifetime value.
 
 By combining historical customer data and pricing signals, we trained an XGBoost model optimized for **recall**, ensuring we catch as many potential churners as possible. All steps—from preprocessing and feature engineering to hyperparameter tuning, evaluation, and deployment—are tracked using MLflow, and the final product is delivered via an interactive Streamlit dashboard.
 
 ---
 
-## 📦 Situation
+## Situation
 
 EkoPower is a power distribution startup that tracks customer usage, billing, and consumption patterns. Churn—customers terminating their service—is a critical KPI.
 
@@ -16,7 +15,7 @@ EkoPower has access to customer profile data (`client_data.csv`) and pricing/usa
 
 ---
 
-## 🧩 Complication
+## Complication
 
 Despite having rich data, EkoPower faced multiple challenges:
 
@@ -31,15 +30,15 @@ Despite having rich data, EkoPower faced multiple challenges:
 
 ---
 
-## ❓ Question
+## Question
 
 **How might we create a reliable, reproducible, and recall-optimized churn prediction pipeline for EkoPower—with full ML lifecycle tracking and an interactive dashboard for decision-makers?**
 
 ---
 
-# 🔧 What We Built
+# What I Built
 
-We implemented a full MLOps-compliant churn prediction solution using:
+I implemented a full MLOps-compliant churn prediction solution using:
 
 - `XGBoost` for classification
 - `Optuna` for hyperparameter tuning (recall-focused)
