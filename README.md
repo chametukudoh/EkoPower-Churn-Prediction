@@ -41,7 +41,7 @@ Despite having rich data, EkoPower faced multiple challenges:
 I implemented a full MLOps-compliant churn prediction solution using:
 
 - `XGBoost` for classification
-- `Optuna` for hyperparameter tuning (recall-focused)
+- `Optuna` for hyperparameter tuning (recall-focused)py
 - `MLflow` for experiment tracking
 - `Streamlit` for the deployment interface
 - `Great Expectations` for data validation
