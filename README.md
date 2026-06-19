@@ -58,6 +58,8 @@ Run tests:
 python -m pytest test -q
 ```
 
+CI uses `requirements-test.txt` to install the small, Python 3.10-compatible dependency set required by the test suite. The full `requirements.txt` captures the wider notebook, serving, and experiment environment.
+
 Inspect tracked MLflow runs:
 
 ```powershell
