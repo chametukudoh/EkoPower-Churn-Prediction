@@ -24,7 +24,6 @@ from xgboost import XGBClassifier
 
 # Project modules
 from src.data.preprocess import preprocess_data
-from src.features.build_features import build_features
 from src.utils.utils import (
     DEFAULT_THRESHOLD,
     ensure_dir,
@@ -82,14 +81,13 @@ def load_model_local(artifact_path: str) -> XGBClassifier:
 def prepare_features_for_inference(
     client_df: pd.DataFrame,
     price_df: pd.DataFrame,
-    target_col: str = "has_churned"
+    target_col: str = "churn"
 ) -> pd.DataFrame:
     """
     Apply the exact preprocessing + feature building steps used in training.
     Drops target column if accidentally present in the provided client_df.
     """
-    client_df = preprocess_data(client_df)
-    feat_df = build_features(client_df, price_df)
+    feat_df = preprocess_data(client_df.copy(), price_df.copy())
 
     # Drop target if present (inference only needs features)
     if target_col in feat_df.columns:

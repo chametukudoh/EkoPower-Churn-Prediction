@@ -1,92 +1,87 @@
-# EkoPower Churn Prediction Pipeline 🔌📉
+# EkoPower Churn Prediction
 
+Portfolio project for building and evaluating an imbalanced customer-churn classifier with reproducible data preparation, experiment tracking, validation, tests and stakeholder-facing interfaces.
 
-I developed an end-to-end churn prediction pipeline for EkoPower to proactively identify customers likely to leave the service. This empowers the team to target high-risk segments with tailored interventions, reduce churn, and improve customer lifetime value.
+## What the repository demonstrates
 
-By combining historical customer data and pricing signals, we trained an XGBoost model optimized for **recall**, ensuring we catch as many potential churners as possible. All steps—from preprocessing and feature engineering to hyperparameter tuning, evaluation, and deployment—are tracked using MLflow, and the final product is delivered via an interactive Streamlit dashboard.
+- XGBoost classification and Optuna tuning
+- explicit recall-focused model selection for the cost of missed churners
+- preprocessing and feature-engineering modules
+- MLflow experiment artifacts
+- Great Expectations data validation
+- pytest coverage for loading, features, inference, validation and pipeline flow
+- Streamlit and FastAPI prototypes
+- Docker packaging
 
----
+## Evidence boundaries
 
-## Situation
+This is a portfolio project, not a deployed EkoPower customer system. It does not establish production usage, churn reduction, revenue impact or live model monitoring.
 
-EkoPower is a power distribution startup that tracks customer usage, billing, and consumption patterns. Churn—customers terminating their service—is a critical KPI.
+Model performance must be reproduced from the current code before quoting exact metrics. Recall is the stated tuning priority, but a deployment decision should also consider precision, PR-AUC, calibration, intervention cost and capacity.
 
-EkoPower has access to customer profile data (`client_data.csv`) and pricing/usage metadata (`price_data.csv`). However, this raw data needs significant cleaning and transformation before it can be used for machine learning purposes.
+The FastAPI and Streamlit surfaces are prototypes. They require compatible generated model artifacts and should not be described as hosted production services.
 
----
+## Repository structure
 
-## Complication
+```text
+api/                 FastAPI prototype
+app/                 Streamlit prototype
+data/                source and processed data used by the project
+scripts/run_pipeline.py
+src/data/            loading and preprocessing
+src/features/        feature engineering
+src/models/          training, tuning and evaluation
+src/serving/         programmatic/batch inference
+src/utils/           validation and shared helpers
+test/                automated tests
+mlruns/              checked-in reference experiment artifacts
+```
 
-Despite having rich data, EkoPower faced multiple challenges:
+## Setup
 
-- The churn class was **highly imbalanced**
-- There was no standardized process for:
-  - Loading and preprocessing data
-  - Engineering features
-  - Tuning and evaluating models
-  - Logging experiments and comparing models
-- Manual interventions were frequent, making reproducibility difficult
-- No live interface existed to inspect churn drivers or simulate churn predictions
+```powershell
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+```
 
----
+Run the pipeline from the repository root:
 
-## Question
+```powershell
+python scripts/run_pipeline.py
+```
 
-**How might we create a reliable, reproducible, and recall-optimized churn prediction pipeline for EkoPower—with full ML lifecycle tracking and an interactive dashboard for decision-makers?**
+Run tests:
 
----
+```powershell
+python -m pytest test -q
+```
 
-# What I Built
+Inspect tracked MLflow runs:
 
-I implemented a full MLOps-compliant churn prediction solution using:
+```powershell
+python -m mlflow ui --backend-store-uri ./mlruns
+```
 
-- `XGBoost` for classification
-- `Optuna` for hyperparameter tuning (recall-focused)py
-- `MLflow` for experiment tracking
-- `Streamlit` for the deployment interface
-- `Great Expectations` for data validation
-- `pytest` for testing all pipeline components
+The UI and API require model artifacts compatible with their loaders. Confirm paths and schemas before starting either surface.
 
-**Pipeline Overview:**
+## Model review checklist
 
-1. **Preprocessing:**
-   - Drop redundant IDs
-   - Handle NAs, strip headers, map target variable
-2. **Feature Engineering:**
-   - Merge client and pricing data
-   - Generate derived features (e.g., margin)
-3. **Modeling:**
-   - Train/test split
-   - Tune with Optuna (recall score)
-   - Final training with best parameters
-4. **Evaluation:**
-   - Precision, Recall, AUC, F1-score
-   - Visual inspection via SHAP, correlation
-5. **Deployment:**
-   - `serve_model.py` for backend inference
-   - `app_streamlit.py` for business-friendly frontend
-6. **Validation:**
-   - Run `validate_data.py` with Great Expectations
-   - 5+ pytest test scripts for data loading, inference, and end-to-end flows
+Before presenting a metric or deploying a new artifact:
 
----
+1. Use a leakage-safe split that reflects the intended prediction time.
+2. Report class balance and confusion matrix.
+3. Report precision, recall, F1, ROC-AUC and PR-AUC.
+4. Select the threshold using intervention cost/capacity, not recall alone.
+5. Check probability calibration and subgroup behavior.
+6. Record dataset, code and parameter versions in MLflow.
+7. Run `python -m pytest test -q`.
 
-# 🚀 Deployment Flow
+## Next improvements
 
-```bash
-# Clone repo and setup
-git clone https://github.com/<your-org>/ekopower-churn.git
-cd ekopower-churn
-pip install -r requirements.txt
-
-# Run ML pipeline (data prep → tuning → training → evaluation)
-python run_pipeline.py
-
-# Launch dashboard
-streamlit run app_streamlit.py
-
-# Run tests
-pytest tests/
-
-# Launch MLflow UI
-mlflow ui
+- Consolidate the API and Streamlit model-loading contracts.
+- Generate a small versioned release artifact rather than relying on ad hoc local paths.
+- Add calibration and intervention-cost analysis.
+- Reduce checked-in MLflow output after publishing a reproducible benchmark report.
+- Add a recorded demo once the current artifact is reproduced end to end.

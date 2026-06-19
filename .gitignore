@@ -1,1 +1,16 @@
-/.eko
+.eko/
+.env
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db
+
+# New local experiment output is ignored. Existing reference runs remain tracked.
+mlruns/
+notebook/mlruns/

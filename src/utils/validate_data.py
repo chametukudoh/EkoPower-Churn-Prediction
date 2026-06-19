@@ -14,7 +14,18 @@ directly in notebooks/scripts without initializing a GE project.
 from typing import Dict, List, Tuple
 import numpy as np
 import pandas as pd
-import great_expectations as ge
+try:
+    import great_expectations as ge
+except ImportError:  # Validation remains optional for lightweight inference/test installs.
+    ge = None
+
+
+def _ge_frame(df: pd.DataFrame):
+    if ge is None:
+        raise ImportError(
+            "great_expectations is required for dataframe validation; install requirements.txt"
+        )
+    return ge.from_pandas(df.copy())
 
 
 # ---------- helpers ----------
@@ -50,7 +61,7 @@ def validate_client_df(df: pd.DataFrame) -> pd.DataFrame:
       - date_activ, date_end, date_modif_prod, date_renewal (dates or parseable)
       - has_gas (expected 't'/'f' in raw), channel_sales, origin_up
     """
-    gdf = ge.from_pandas(df.copy())
+    gdf = _ge_frame(df)
 
     expected_cols = [
         "id",
@@ -86,7 +97,7 @@ def validate_price_df(df: pd.DataFrame) -> pd.DataFrame:
       - price_off_peak_var, price_peak_var, price_mid_peak_var
       - price_off_peak_fix, price_peak_fix, price_mid_peak_fix
     """
-    gdf = ge.from_pandas(df.copy())
+    gdf = _ge_frame(df)
 
     price_cols = [
         "price_off_peak_var", "price_peak_var", "price_mid_peak_var",
@@ -125,7 +136,7 @@ def validate_feature_df(df: pd.DataFrame) -> pd.DataFrame:
       - aggregated price features: *_mean, *_std
       - one-hot columns for origin_up_* and channel_sales_*
     """
-    gdf = ge.from_pandas(df.copy())
+    gdf = _ge_frame(df)
 
     results = []
 
